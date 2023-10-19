@@ -4,21 +4,30 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
   before_action :set_title, only: %i[index new edit]
 
+  authenticate_user!
+
   # GET /tasks or /tasks.json
   def index
+    page_title('Your Tasks')
+
     @tasks = Task.all
   end
 
   # GET /tasks/1 or /tasks/1.json
-  def show; end
+  def show
+    page_title(@task.title)
+  end
 
   # GET /tasks/new
   def new
+    page_title('New Task')
     @task = Task.new
   end
 
   # GET /tasks/1/edit
-  def edit; end
+  def edit
+    page_title("Edit Task: #{task.title}")
+  end
 
   # POST /tasks or /tasks.json
   def create
