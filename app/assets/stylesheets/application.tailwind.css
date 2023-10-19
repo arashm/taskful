@@ -18,4 +18,28 @@
   .form-actions {
     @apply flex gap-4 my-4;
   }
+
+  table {
+    @apply w-full text-sm text-left mb-4;
+  }
+
+  table thead {
+    @apply text-xs uppercase bg-slate-200;
+  }
+
+  table tbody {
+    @apply bg-white;
+  }
+
+  table th, table td {
+    @apply py-4 px-6;
+  }
+
+  table img {
+    min-width: 30px;
+  }
+
+  .table-responsive {
+    @apply overflow-x-auto relative;
+  }
 }

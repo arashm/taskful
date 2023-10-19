@@ -5,4 +5,6 @@ class Task < ApplicationRecord
 
   validates :title, :description, presence: true
   validates_comparison_of :due_date, greater_than_or_equal_to: -> { Time.zone.now }, allow_blank: true
+
+  enum status: { pending: 'p', completed: 'c' }
 end

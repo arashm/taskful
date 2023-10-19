@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   def index
     page_title('Your Tasks')
 
-    @tasks = Task.all
+    @tasks = current_user.tasks.all
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -21,17 +21,18 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     page_title('New Task')
-    @task = Task.new
+
+    @task = current_user.tasks.new
   end
 
   # GET /tasks/1/edit
   def edit
-    page_title("Edit Task: #{task.title}")
+    page_title("Edit Task: #{@task.title}")
   end
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.new(task_params)
 
     respond_to do |format|
       if @task.save
@@ -71,7 +72,7 @@ class TasksController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_task
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

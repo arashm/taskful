@@ -10,13 +10,13 @@
   </p>
 
   <p>
-    <strong>User:</strong>
-    <%= task.user_id %>
+    <strong>Status:</strong>
+    <%= task.status %>
   </p>
 
   <p>
-    <strong>Status:</strong>
-    <%= task.status %>
+    <strong>Due Date:</strong>
+    <%= task.due_date.to_formatted_s(:long) %>
   </p>
 
 </div>
