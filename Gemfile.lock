@@ -83,8 +83,6 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
-    city-state (1.1.0)
-      rubyzip (>= 2.3)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crack (0.4.5)
@@ -227,7 +225,6 @@ GEM
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
     ruby2_keywords (0.0.5)
-    rubyzip (2.3.2)
     sentry-rails (5.12.0)
       railties (>= 5.0)
       sentry-ruby (~> 5.12.0)
@@ -274,7 +271,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  city-state
   cssbundling-rails
   debug
   devise

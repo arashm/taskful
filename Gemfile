@@ -53,8 +53,6 @@ gem 'devise'
 
 gem 'httpx'
 
-gem 'city-state'
-
 gem 'geocoder'
 
 gem 'pg'

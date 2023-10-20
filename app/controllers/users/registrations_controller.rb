@@ -7,7 +7,7 @@ module Users
     # GET /resource/sign_up
     def new
       page_title('Sign Up')
-      @countries = CS.countries.map { |key, value| [value, key] }
+      @countries = Countries.new.map { |key, value| [value, key] }
 
       super
     end

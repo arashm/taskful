@@ -2,10 +2,7 @@
 
 class CitiesController < ApplicationController
   def index
-    @cities = CS.states(index_params[:country_code])
-                .keys
-                .flat_map { |state| CS.cities(state, index_params[:country_code]) }
-                .sort
+    @cities = Cities.new.cities[index_params[:country_code]]
 
     render json: { options: helpers.options_for_cities_select(@cities) }
   end
