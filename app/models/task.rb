@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
-  after_create :create_weather
+  after_create :store_weather
 
   belongs_to :user
   has_one :weather, dependent: :destroy
@@ -13,12 +13,16 @@ class Task < ApplicationRecord
 
   private
 
-  # TODO: move to background job processor
-  def create_weather
-    return unless task.due_date && task.due_date < 5.days.from_now
+  def current_weather
+    @current_weather ||= OpenWeatherMap::Api.request(lat: user.lat_long[0], lon: user.lat_long[1],
+                                                     timestamp: due_date.to_i).call
+  end
 
-    response = OpenWeatherMap::Api.request(lat: user.lat, lon: user.lon, timestamp: due_date.to_i).call
-    weather.create(**response.slice(:weather_description, :temperature, :humidity, :pressure))
+  # TODO: move to background job processor
+  def store_weather
+    return unless due_date.present? && due_date < 5.days.from_now
+
+    create_weather(**current_weather.slice(:weather_description, :temperature, :humidity, :pressure))
   rescue OpenWeatherMap::Error
     Rails.logger.error("Error while fetching weather for task #{id}")
   end
