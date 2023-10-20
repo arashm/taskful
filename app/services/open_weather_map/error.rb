@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module Openweather
+module OpenWeatherMap
   class Error < StandardError; end
 end

@@ -14,6 +14,7 @@ module OpenWeatherMap
 
     def call
       response = HTTPX.get(url)
+      response.raise_for_status
       JSON.parse(response.to_s)
     rescue HTTPX::Error
       raise OpenWeatherMap::Error

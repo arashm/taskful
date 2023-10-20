@@ -3,10 +3,8 @@
 module OpenWeatherMap
   class Timed < Request
     def call
-      index = super['list'].find_index do |item|
-        item['dt'] > @timestamp
-      end
-
+      response = super
+      index = response['list'].find_index { |item| item['dt'] > @timestamp }
       weather = response['list'][index - 1]
 
       {

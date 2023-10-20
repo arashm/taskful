@@ -7,7 +7,7 @@ module OpenWeatherMap
 
       {
         timestamp: Time.zone.at(response['dt']),
-        weather: response.dig('weather', 0, 'main'),
+        weather_description: response.dig('weather', 0, 'description'),
         temperature: response.dig('main', 'temp'),
         humidity: response.dig('main', 'humidity'),
         pressure: response.dig('main', 'pressure')
