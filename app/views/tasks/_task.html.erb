@@ -19,4 +19,33 @@
     <%= task.due_date.to_formatted_s(:long) %>
   </p>
 
+  <% if task.weather.present? %>
+    <div class="mt-4">
+      <p>
+        <strong>Weather forcast at due date:</strong>
+      </p>
+
+      <p class="pl-4">
+        <strong>Description:</strong>
+        <%= task.weather.weather_description %>
+      </p>
+
+      <p class="pl-4">
+        <strong>Temperature:</strong>
+        <%= task.weather.temperature %>
+      </p>
+
+      <p class="pl-4">
+        <strong>Pressure:</strong>
+        <%= task.weather.pressure %>
+      </p>
+
+      <p class="pl-4">
+        <strong>Humidity:</strong>
+        <%= task.weather.humidity %>
+      </p>
+
+    </div>
+  <% end %>
+
 </div>
