@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_19_175212) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_19_223416) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.integer "user_id", null: false
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,12 +29,25 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_19_175212) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "location"
+    t.string "country"
+    t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weathers", force: :cascade do |t|
+    t.string "weather_description"
+    t.float "temperature"
+    t.integer "humidity"
+    t.integer "pressure"
+    t.integer "task_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_weathers_on_task_id"
+  end
+
   add_foreign_key "tasks", "users"
+  add_foreign_key "weathers", "tasks"
 end
