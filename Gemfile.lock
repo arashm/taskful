@@ -83,6 +83,8 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    city-state (1.1.0)
+      rubyzip (>= 2.3)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crack (0.4.5)
@@ -104,6 +106,7 @@ GEM
     drb (2.1.1)
       ruby2_keywords
     erubi (1.12.0)
+    geocoder (1.8.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashdiff (1.0.1)
@@ -221,6 +224,7 @@ GEM
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -262,9 +266,11 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  city-state
   cssbundling-rails
   debug
   devise
+  geocoder
   httpx
   jbuilder
   jsbundling-rails
